@@ -1,0 +1,36 @@
+/home/hellzhammer/Desktop/PerleyML_Core/bin/Debug/netstandard2.0/PerleyML_Core.deps.json
+/home/hellzhammer/Desktop/PerleyML_Core/bin/Debug/netstandard2.0/PerleyML_Core.dll
+/home/hellzhammer/Desktop/PerleyML_Core/bin/Debug/netstandard2.0/PerleyML_Core.pdb
+/home/hellzhammer/Desktop/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.csprojAssemblyReference.cache
+/home/hellzhammer/Desktop/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.AssemblyInfoInputs.cache
+/home/hellzhammer/Desktop/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.AssemblyInfo.cs
+/home/hellzhammer/Desktop/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.csproj.CoreCompileInputs.cache
+/home/hellzhammer/Desktop/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.dll
+/home/hellzhammer/Desktop/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.pdb
+/home/hellzhammer/Desktop/Projects Do Not Remove/PerleyML_Core/bin/Debug/netstandard2.0/PerleyML_Core.deps.json
+/home/hellzhammer/Desktop/Projects Do Not Remove/PerleyML_Core/bin/Debug/netstandard2.0/PerleyML_Core.dll
+/home/hellzhammer/Desktop/Projects Do Not Remove/PerleyML_Core/bin/Debug/netstandard2.0/PerleyML_Core.pdb
+/home/hellzhammer/Desktop/Projects Do Not Remove/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.csprojAssemblyReference.cache
+/home/hellzhammer/Desktop/Projects Do Not Remove/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.AssemblyInfoInputs.cache
+/home/hellzhammer/Desktop/Projects Do Not Remove/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.AssemblyInfo.cs
+/home/hellzhammer/Desktop/Projects Do Not Remove/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.csproj.CoreCompileInputs.cache
+/home/hellzhammer/Desktop/Projects Do Not Remove/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.dll
+/home/hellzhammer/Desktop/Projects Do Not Remove/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.pdb
+/home/matt/Projects/PerleyML_Core/bin/Debug/netstandard2.0/PerleyML_Core.deps.json
+/home/matt/Projects/PerleyML_Core/bin/Debug/netstandard2.0/PerleyML_Core.dll
+/home/matt/Projects/PerleyML_Core/bin/Debug/netstandard2.0/PerleyML_Core.pdb
+/home/matt/Projects/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.csprojAssemblyReference.cache
+/home/matt/Projects/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.AssemblyInfoInputs.cache
+/home/matt/Projects/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.AssemblyInfo.cs
+/home/matt/Projects/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.csproj.CoreCompileInputs.cache
+/home/matt/Projects/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.dll
+/home/matt/Projects/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.pdb
+/home/matt/Projects/Perley_ML/PerleyML_Core/bin/Debug/netstandard2.0/PerleyML_Core.deps.json
+/home/matt/Projects/Perley_ML/PerleyML_Core/bin/Debug/netstandard2.0/PerleyML_Core.dll
+/home/matt/Projects/Perley_ML/PerleyML_Core/bin/Debug/netstandard2.0/PerleyML_Core.pdb
+/home/matt/Projects/Perley_ML/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.csprojAssemblyReference.cache
+/home/matt/Projects/Perley_ML/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.AssemblyInfoInputs.cache
+/home/matt/Projects/Perley_ML/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.AssemblyInfo.cs
+/home/matt/Projects/Perley_ML/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.csproj.CoreCompileInputs.cache
+/home/matt/Projects/Perley_ML/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.dll
+/home/matt/Projects/Perley_ML/PerleyML_Core/obj/Debug/netstandard2.0/PerleyML_Core.pdb
