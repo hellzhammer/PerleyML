@@ -42,18 +42,25 @@ namespace PerleyML_Core.Math.LinearRegression
         /// <returns>The forb0b1.</returns>
         /// <param name="x">The x coordinate.</param>
         /// <param name="y">The y coordinate.</param>
-        public (double x_mean, double y_mean, double sumOfSquares, double sumOfProducts, double a, double b) Solve_OrdinaryLeastSquares(double[] y, double[] x)
+        public (double x_mean, double y_mean, double sumOfSquares, double Variance, double StandardDev, double sumOfProducts, double a, double b) Solve_OrdinaryLeastSquares(double[] y, double[] x)
         {
             double xmean = this.GetMean(x);
             double ymean = this.GetMean(y);
+
             double[] xMinusMean = Scalar_Subtract(x, xmean);
             double[] yMinusMean = Scalar_Subtract(y, ymean);
+
             double _sumOfSquares = Square_Data(xMinusMean);
+            double variance = this.GetVariance(x, _sumOfSquares);
+            double standardDev = this.GetStandardDev(variance);
+
             double[] multiplyXY = Elemental_Multiply(xMinusMean, yMinusMean);
+
             double _sumOfProducts = Elemental_Addition(multiplyXY);
             double a = GetA(_sumOfSquares, _sumOfProducts);
             double b = GetB(ymean, xmean, a);
-            return (xmean, ymean, _sumOfSquares, _sumOfProducts, a, b);
+
+            return (xmean, ymean, _sumOfSquares, variance, standardDev, _sumOfProducts, a, b);
         }
 
         /// <summary>

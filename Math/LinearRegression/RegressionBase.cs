@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PerleyML_Core.Math.LinearRegression
 {
@@ -22,6 +23,59 @@ namespace PerleyML_Core.Math.LinearRegression
             }
             var mean = val / data_set.Length;
             return mean;
+        }
+
+        /// <summary>
+        /// Gets the median f a given datast
+        /// </summary>
+        /// <returns>The median.</returns>
+        /// <param name="data_set">Data set.</param>
+        public double GetMedian(double[] data_set) 
+        {
+            Array.Sort(data_set);
+            //is odd
+            if (data_set.Length % 2 != 0)
+            {
+                //remove 1 item to make even and divide by 2.
+                var midIndex = (data_set.Length - 1) / 2;
+                // readd removed index to give actual result
+                midIndex += 1;
+                //return the adjusted index
+                var median = data_set[midIndex];
+                return median;
+            }
+            // is even
+            else
+            {
+                int indexHalf = data_set.Length / 2;
+                var item1 = data_set[indexHalf];
+                var item2 = data_set[indexHalf + 1];
+                var median = (item1 + item2) / 2;
+                return median; 
+            }
+        }
+
+        /// <summary>
+        /// Finds the variace in a given data set
+        /// </summary>
+        /// <returns>The variance.</returns>
+        /// <param name="dataset">Dataset.</param>
+        public double GetVariance(double[] dataset,  double dataSquared)
+        {
+            var variance = dataSquared / (dataset.Length - 1);
+            return variance;
+        }
+
+        /// <summary>
+        /// finds the standard deviation of a given variance
+        /// </summary>
+        /// <returns>The standard dev.</returns>
+        /// <param name="setVariance">Set variance.</param>
+        public double GetStandardDev(double setVariance)
+        {
+            // just squaring the variance
+            var sqaured = setVariance * setVariance;
+            return sqaured;
         }
 
         /// <summary>
