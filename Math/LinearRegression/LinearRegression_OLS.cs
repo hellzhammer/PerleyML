@@ -17,7 +17,7 @@ namespace PerleyML_Core.Math.LinearRegression
         /// <returns>The b1.</returns>
         /// <param name="squaredTotal">Squared total.</param>
         /// <param name="xyTotal">Xy total.</param>
-        public double GetB1(double squaredTotal, double xyTotal)
+        public double GetA(double squaredTotal, double xyTotal)
         {
             return xyTotal / squaredTotal;
         }
@@ -29,7 +29,7 @@ namespace PerleyML_Core.Math.LinearRegression
         /// <param name="ymean">Ymean.</param>
         /// <param name="xmean">Xmean.</param>
         /// <param name="b1">B1.</param>
-        public double GetBNot(double ymean, double xmean, double b1)
+        public double GetB(double ymean, double xmean, double b1)
         {
             var sum = b1 * xmean;
             var b0 = ymean - sum;
@@ -42,18 +42,18 @@ namespace PerleyML_Core.Math.LinearRegression
         /// <returns>The forb0b1.</returns>
         /// <param name="x">The x coordinate.</param>
         /// <param name="y">The y coordinate.</param>
-        public (double x_mean, double y_mean, double x_sqaured, double b1, double b0) Solve_OrdinaryLeastSquares(double[] x, double[] y)
+        public (double x_mean, double y_mean, double sumOfSquares, double sumOfProducts, double a, double b) Solve_OrdinaryLeastSquares(double[] y, double[] x)
         {
             double xmean = this.GetMean(x);
             double ymean = this.GetMean(y);
             double[] xMinusMean = Scalar_Subtract(x, xmean);
             double[] yMinusMean = Scalar_Subtract(y, ymean);
-            double xSquared = Square_Data(xMinusMean);
+            double _sumOfSquares = Square_Data(xMinusMean);
             double[] multiplyXY = Elemental_Multiply(xMinusMean, yMinusMean);
-            double totalXY = Elemental_Addition(multiplyXY);
-            double b1 = GetB1(xSquared, totalXY);
-            double b0 = GetBNot(ymean, xmean, b1);
-            return (xmean, ymean, xSquared, b1, b0);
+            double _sumOfProducts = Elemental_Addition(multiplyXY);
+            double a = GetA(_sumOfSquares, _sumOfProducts);
+            double b = GetB(ymean, xmean, a);
+            return (xmean, ymean, _sumOfSquares, _sumOfProducts, a, b);
         }
 
         /// <summary>

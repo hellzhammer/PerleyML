@@ -5,7 +5,6 @@ namespace PerleyML_Core.Math.LinearRegression
 {
     public class LinearRegression_PML : RegressionBase
     {
-
         public LinearRegression_PML(double[] _y_data, double[] _x_data)
         {
             this.x_data = _x_data;
@@ -18,7 +17,11 @@ namespace PerleyML_Core.Math.LinearRegression
         /// <returns>The regression analysis.</returns>
         /// <param name="x">The x coordinate.</param>
         /// <param name="y">The y coordinate.</param>
-        public (double variance, double standard_deviation, double correlation, double slope, double y_intercept) Linear_Regression_Analysis(double[] x, double[] y)
+        public (double variance, 
+            double standard_deviation, 
+            double correlation, 
+            double slope, 
+            double y_intercept) Linear_Regression_Analysis(double[] x, double[] y)
         {
             var variance = this.GetVariance(x);
             var standardDev = this.GetStandardDeviation(x);
