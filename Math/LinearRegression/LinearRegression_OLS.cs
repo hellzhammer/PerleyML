@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace PerleyML_Core.Math.LinearRegression
 {
@@ -17,7 +16,7 @@ namespace PerleyML_Core.Math.LinearRegression
         /// <returns>The b1.</returns>
         /// <param name="squaredTotal">Squared total.</param>
         /// <param name="xyTotal">Xy total.</param>
-        public double GetA(double squaredTotal, double xyTotal)
+        private double GetA(double squaredTotal, double xyTotal)
         {
             return xyTotal / squaredTotal;
         }
@@ -29,7 +28,7 @@ namespace PerleyML_Core.Math.LinearRegression
         /// <param name="ymean">Ymean.</param>
         /// <param name="xmean">Xmean.</param>
         /// <param name="b1">B1.</param>
-        public double GetB(double ymean, double xmean, double b1)
+        private double GetB(double ymean, double xmean, double b1)
         {
             var sum = b1 * xmean;
             var b0 = ymean - sum;
@@ -42,23 +41,24 @@ namespace PerleyML_Core.Math.LinearRegression
         /// <returns>The forb0b1.</returns>
         /// <param name="x">The x coordinate.</param>
         /// <param name="y">The y coordinate.</param>
-        public (double x_mean, double y_mean, double sumOfSquares, double Variance, double StandardDev, double sumOfProducts, double a, double b) Solve_OrdinaryLeastSquares(double[] y, double[] x)
+        public (double x_mean, double y_mean, double sumOfSquares, double Variance, double StandardDev, double sumOfProducts, double a, double b) Solve_OrdinaryLeastSquares()
         {
-            double xmean = this.GetMean(x);
-            double ymean = this.GetMean(y);
+            double xmean = this.GetMean(this.x_data);
+            double ymean = this.GetMean(this.y_data);
 
-            double[] xMinusMean = Scalar_Subtract(x, xmean);
-            double[] yMinusMean = Scalar_Subtract(y, ymean);
+            double[] xMinusMean = this.Scalar_Subtract(this.x_data, xmean);
+            double[] yMinusMean = this.Scalar_Subtract(this.y_data, ymean);
 
-            double _sumOfSquares = Square_Data(xMinusMean);
-            double variance = this.GetVariance(x, _sumOfSquares);
+            double _sumOfSquares = this.Square_Data(xMinusMean);
+            double variance = this.GetVariance(this.x_data, _sumOfSquares);
             double standardDev = this.GetStandardDev(variance);
 
-            double[] multiplyXY = Elemental_Multiply(xMinusMean, yMinusMean);
+            double[] multiplyXY = this.Elemental_Multiply(xMinusMean, yMinusMean);
 
-            double _sumOfProducts = Elemental_Addition(multiplyXY);
-            double a = GetA(_sumOfSquares, _sumOfProducts);
-            double b = GetB(ymean, xmean, a);
+            double _sumOfProducts = this.Elemental_Addition(multiplyXY);
+            //var sig = 1 / (1 + (1 / _sumOfProducts));
+            double a = this.GetA(_sumOfSquares, _sumOfProducts);
+            double b = this.GetB(ymean, xmean, a);
 
             return (xmean, ymean, _sumOfSquares, variance, standardDev, _sumOfProducts, a, b);
         }
@@ -133,6 +133,30 @@ namespace PerleyML_Core.Math.LinearRegression
             var sqrt1 = System.Math.Sqrt(System.Math.Round(tot, 1) / observations);
             return sqrt1;
         }
+
+        /*
+        public void Logistic_Analasys(double[] y, double[] x)
+        {
+            double xmean = this.GetMean(x);
+            double ymean = this.GetMean(y);
+
+            double[] xMinusMean = Scalar_Subtract(x, xmean);
+            double[] yMinusMean = Scalar_Subtract(y, ymean);
+
+            double _sumOfSquares = Square_Data(xMinusMean);
+            double variance = this.GetVariance(x, _sumOfSquares);
+            double standardDev = this.GetStandardDev(variance);
+
+            double[] multiplyXY = Elemental_Multiply(xMinusMean, yMinusMean);
+
+            double _sumOfProducts = Elemental_Addition(multiplyXY);
+            var sigmoid = this.Sigmoid(_sumOfProducts);
+            //double a = GetA(_sumOfSquares, _sumOfProducts);
+            //double b = GetB(ymean, xmean, a);
+
+            //return (xmean, ymean, _sumOfSquares, variance, standardDev, _sumOfProducts, a, b);
+        }
+        */
 
         /*
         /// <summary>

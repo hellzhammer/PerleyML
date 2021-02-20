@@ -6,15 +6,15 @@ namespace PerleyML_Core.Math.LinearRegression
 {
     public class RegressionBase
     {
-        public double[] x_data { get; set; }
-        public double[] y_data { get; set; }
+        public double[] x_data { get; internal set; }
+        public double[] y_data { get; internal set; }
 
         /// <summary>
         /// gets the mean of a array
         /// </summary>
         /// <returns>The mean.</returns>
         /// <param name="data_set">Data set.</param>
-        public double GetMean(double[] data_set)
+        internal double GetMean(double[] data_set)
         {
             double val = 0;
             for (int i = 0; i < data_set.Length; i++)
@@ -30,7 +30,7 @@ namespace PerleyML_Core.Math.LinearRegression
         /// </summary>
         /// <returns>The median.</returns>
         /// <param name="data_set">Data set.</param>
-        public double GetMedian(double[] data_set) 
+        internal double GetMedian(double[] data_set) 
         {
             Array.Sort(data_set);
             //is odd
@@ -56,11 +56,21 @@ namespace PerleyML_Core.Math.LinearRegression
         }
 
         /// <summary>
+        /// Sigmoid the specified val.
+        /// </summary>
+        /// <returns>The sigmoid.</returns>
+        /// <param name="val">Value.</param>
+        internal double Sigmoid(double val)
+        {
+            return (1 / (1 + System.Math.Pow(System.Math.E, (-val))));
+        }
+
+        /// <summary>
         /// Finds the variace in a given data set
         /// </summary>
         /// <returns>The variance.</returns>
         /// <param name="dataset">Dataset.</param>
-        public double GetVariance(double[] dataset,  double dataSquared)
+        internal double GetVariance(double[] dataset,  double dataSquared)
         {
             var variance = dataSquared / (dataset.Length - 1);
             return variance;
@@ -71,7 +81,7 @@ namespace PerleyML_Core.Math.LinearRegression
         /// </summary>
         /// <returns>The standard dev.</returns>
         /// <param name="setVariance">Set variance.</param>
-        public double GetStandardDev(double setVariance)
+        internal double GetStandardDev(double setVariance)
         {
             // just squaring the variance
             var sqaured = setVariance * setVariance;
@@ -83,7 +93,7 @@ namespace PerleyML_Core.Math.LinearRegression
         /// </summary>
         /// <returns>The addition.</returns>
         /// <param name="dataset">Dataset.</param>
-        public double Elemental_Addition(double[] dataset)
+        internal double Elemental_Addition(double[] dataset)
         {
             double rtnval = 0;
             for (int i = 0; i < dataset.Length; i++)
@@ -98,7 +108,7 @@ namespace PerleyML_Core.Math.LinearRegression
         /// </summary>
         /// <returns>The data.</returns>
         /// <param name="data_set">Data set.</param>
-        public double Square_Data(double[] data_set)
+        internal double Square_Data(double[] data_set)
         {
             List<double> _dset = new List<double>();
             for (int i = 0; i < data_set.Length; i++)
@@ -119,7 +129,7 @@ namespace PerleyML_Core.Math.LinearRegression
         /// <returns>The subtract.</returns>
         /// <param name="data_set">Data set.</param>
         /// <param name="mean">Mean.</param>
-        public double[] Scalar_Subtract(double[] data_set, double mean)
+        internal double[] Scalar_Subtract(double[] data_set, double mean)
         {
             var rtnval = new List<double>();
             for (int i = 0; i < data_set.Length; i++)
@@ -136,7 +146,7 @@ namespace PerleyML_Core.Math.LinearRegression
         /// <returns>The multiply.</returns>
         /// <param name="x">The x coordinate.</param>
         /// <param name="y">The y coordinate.</param>
-        public double[] Elemental_Multiply(double[] x, double[] y)
+        internal double[] Elemental_Multiply(double[] x, double[] y)
         {
             List<double> rtnval = new List<double>();
             for (int i = 0; i < x.Length; i++)
