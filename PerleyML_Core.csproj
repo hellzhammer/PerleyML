@@ -2,13 +2,12 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>PerleyML_Core</PackageId>
-    <Version>1.1.2</Version>
+    <Version>0.1</Version>
     <Authors>Matt Perley</Authors>
     <Company>mattperley.xyz</Company>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MathNet.Numerics" Version="4.12.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 

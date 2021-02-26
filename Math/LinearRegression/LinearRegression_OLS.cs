@@ -56,7 +56,7 @@ namespace PerleyML_Core.Math.LinearRegression
             double[] multiplyXY = this.Elemental_Multiply(xMinusMean, yMinusMean);
 
             double _sumOfProducts = this.Elemental_Addition(multiplyXY);
-            //var sig = 1 / (1 + (1 / _sumOfProducts));
+            
             double a = this.GetA(_sumOfSquares, _sumOfProducts);
             double b = this.GetB(ymean, xmean, a);
 
@@ -134,8 +134,7 @@ namespace PerleyML_Core.Math.LinearRegression
             return sqrt1;
         }
 
-        /*
-        public void Logistic_Analasys(double[] y, double[] x)
+        public void Binary_Logistic_Analasys(double[] y, double[] x)
         {
             double xmean = this.GetMean(x);
             double ymean = this.GetMean(y);
@@ -150,12 +149,15 @@ namespace PerleyML_Core.Math.LinearRegression
             double[] multiplyXY = Elemental_Multiply(xMinusMean, yMinusMean);
 
             double _sumOfProducts = Elemental_Addition(multiplyXY);
-            var sigmoid = this.Sigmoid(_sumOfProducts);
-            //double a = GetA(_sumOfSquares, _sumOfProducts);
-            //double b = GetB(ymean, xmean, a);
-
+            
+            double a = GetA(_sumOfSquares, _sumOfProducts);
+            double b = GetB(ymean, xmean, a);
+            var sigmoid = this.Sigmoid(a+b);
             //return (xmean, ymean, _sumOfSquares, variance, standardDev, _sumOfProducts, a, b);
         }
+
+        /*
+        
         */
 
         /*

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace PerleyML_Core.Math.Matrix
+namespace PerleyML_Core.Math.MatrixMath
 {
     public class Matrix
     {
@@ -10,17 +10,60 @@ namespace PerleyML_Core.Math.Matrix
             this.value = matrix;
         }
 
-        public Matrix(int matrixRows, int matrixCols, double maxOutput, double minOutput){
-            // build matrix with random values
-            this.value = this.BuildPredictionMatrix_Dimmensional(matrixRows, matrixCols, maxOutput, minOutput);
+        public Matrix(int matrixRows, int matrixCols, double maxOutput, double minOutput)
+        {
+            this.value = new double[matrixRows, matrixCols];
         }
 
-        public Matrix(double[][] matrix){
+        public Matrix(double[][] matrix)
+        {
             this.value = Matrix.ToDimmensional(matrix);
         }
 
+        #region Exponent Functions
+        /// <summary>
+        /// applies an exponent function to each value
+        /// </summary>
+        /// <returns>The exp.</returns>
+        public double[,] PointwiseExp()
+        {
+            double[,] newMat = new double[this.value.GetUpperBound(1) + 1, this.value.GetUpperBound(0) + 1];
+            for (int x = 0; x < this.value.GetUpperBound(0) + 1; x++)
+            {
+                for (int i = 0; i < this.value.GetUpperBound(1) + 1; i++)
+                {
+                    newMat[x, i] = System.Math.Pow(System.Math.E, (-this.value[x, i]));
+                }
+            }
+            return newMat;
+        }
+
+        /// <summary>
+        /// applies an exponent function to each value
+        /// </summary>
+        /// <returns>The exp.</returns>
+        /// <param name="matrix">Matrix.</param>
+        public static double[,] PointwiseExp(double[,] matrix)
+        {
+            double[,] newMat = new double[matrix.GetUpperBound(0) + 1, matrix.GetUpperBound(1) + 1];
+            for (int x = 0; x < matrix.GetUpperBound(0) + 1; x++)
+            {
+                for (int i = 0; i < matrix.GetUpperBound(1) + 1; i++)
+                {
+                    newMat[x, i] = System.Math.Pow(System.Math.E, (-matrix[x, i]));
+                }
+            }
+            return newMat;
+        }
+        #endregion
         #region Transpose
-            public static double[][] Transpose_Jagged(double[][] original){
+        /// <summary>
+        /// transpose a matrix, double[][] array
+        /// </summary>
+        /// <returns>The jagged.</returns>
+        /// <param name="original">Original.</param>
+        public static double[][] Transpose_Jagged(double[][] original)
+        {
             List<double[]> newMat = new List<double[]>();
             for (int i = 0; i < original[0].Length; i++)
             {
@@ -34,33 +77,39 @@ namespace PerleyML_Core.Math.Matrix
             return newMat.ToArray();
         }
 
-        public static double[,] Transpose_Dimmensional(double[,] original){
+        /// <summary>
+        /// Transposes the dimmensional.
+        /// double[,]
+        /// </summary>
+        /// <returns>The dimmensional.</returns>
+        /// <param name="original">Original.</param>
+        public static double[,] Transpose_Dimmensional(double[,] original)
+        {
             double[,] newMat = new double[original.GetUpperBound(1) + 1, original.GetUpperBound(0) + 1];
 
             for (int i = 0; i < original.GetUpperBound(1) + 1; i++)
             {
                 for (int j = 0; j < original.GetUpperBound(0) + 1; j++)
                 {
-                    newMat[i,j] = original[j,i];
+                    newMat[i, j] = original[j, i];
                 }
             }
 
             return newMat;
         }
         #endregion
-
         #region Divide
         /// <summary>
         /// divides a matrix by a scalar
         /// </summary>
         /// <returns>The divide scalar.</returns>
-        /// <param name="matrix">Matrix.</param>
+        /// <param name="from_right">Matrix.</param>
         /// <param name="scalar">Scalar.</param>
         public double[,] Matrix_Divide_Scalar(double scalar, bool from_right)
         {
             if (from_right)
             {
-                double[,] newMat = new double[this.value.GetUpperBound(0), this.value.GetUpperBound(1)];
+                double[,] newMat = new double[this.value.GetUpperBound(0) + 1, this.value.GetUpperBound(1) + 1];
                 for (int i = 0; i < this.value.GetUpperBound(0) + 1; i++)
                 {
                     for (int j = 0; j < this.value.GetUpperBound(1) + 1; j++)
@@ -72,7 +121,7 @@ namespace PerleyML_Core.Math.Matrix
             }
             else
             {
-                double[,] newMat = new double[this.value.GetUpperBound(0), this.value.GetUpperBound(1)];
+                double[,] newMat = new double[this.value.GetUpperBound(0) + 1, this.value.GetUpperBound(1) + 1];
                 for (int i = 0; i < this.value.GetUpperBound(0) + 1; i++)
                 {
                     for (int j = 0; j < this.value.GetUpperBound(1) + 1; j++)
@@ -83,13 +132,74 @@ namespace PerleyML_Core.Math.Matrix
                 return newMat;
             }
         }
+
+        /// <summary>
+        /// divide a matrix by a scalar
+        /// </summary>
+        /// <returns>The divide scalar.</returns>
+        /// <param name="matrix">Matrix.</param>
+        /// <param name="scalar">Scalar.</param>
+        public static double[,] Matrix_Divide_Scalar(double[,] matrix, double scalar)
+        {
+            double[,] newMat = new double[matrix.GetUpperBound(0) + 1, matrix.GetUpperBound(1) + 1];
+            for (int i = 0; i < matrix.GetUpperBound(0) + 1; i++)
+            {
+                for (int j = 0; j < matrix.GetUpperBound(1) + 1; j++)
+                {
+                    newMat[i, j] = matrix[i, j] / scalar;
+                }
+            }
+            return newMat;
+        }
+        /// <summary>
+        /// divide a matric by a scalar
+        /// </summary>
+        /// <returns>The divide scalar.</returns>
+        /// <param name="scalar">Scalar.</param>
+        /// <param name="matrix">Matrix.</param>
+        public static double[,] Matrix_Divide_Scalar(double scalar, double[,] matrix)
+        {
+            double[,] newMat = new double[matrix.GetUpperBound(0) + 1, matrix.GetUpperBound(1) + 1];
+            for (int i = 0; i < matrix.GetUpperBound(0) + 1; i++)
+            {
+                for (int j = 0; j < matrix.GetUpperBound(1) + 1; j++)
+                {
+                    newMat[i, j] = scalar / matrix[i, j];
+                }
+            }
+            return newMat;
+        }
         #endregion
         #region Subtract
+        public static double[,] Matrix_Subtract_Scalar(double[,] matrix, double scalar)
+        {
+            double[,] newMat = new double[matrix.GetUpperBound(0) + 1, matrix.GetUpperBound(1) + 1];
+            for (int i = 0; i < matrix.GetUpperBound(0) + 1; i++)
+            {
+                for (int j = 0; j < matrix.GetUpperBound(1) + 1; j++)
+                {
+                    newMat[i, j] = matrix[i, j] - scalar;
+                }
+            }
+            return newMat;
+        }
+        public static double[,] Matrix_Subtract_Scalar(double scalar, double[,] matrix)
+        {
+            double[,] newMat = new double[matrix.GetUpperBound(0) + 1, matrix.GetUpperBound(1) + 1];
+            for (int i = 0; i < matrix.GetUpperBound(0) + 1; i++)
+            {
+                for (int j = 0; j < matrix.GetUpperBound(1) + 1; j++)
+                {
+                    newMat[i, j] = scalar - matrix[i, j];
+                }
+            }
+            return newMat;
+        }
         /// <summary>
         /// subtracts a scalar from the left.
         /// </summary>
         /// <param name="scalar"></param>
-        /// <param name="original"></param>
+        /// <param name="from_right"></param>
         /// <returns></returns>
         public double[,] Matrix_Subtract_Scalar(double scalar, bool from_right)
         {
@@ -143,11 +253,35 @@ namespace PerleyML_Core.Math.Matrix
         }
         #endregion
         #region Addition
+        public static double[,] Matrix_Add_Scalar(double[,] matrix, double scalar)
+        {
+            double[,] newMat = new double[matrix.GetUpperBound(0) + 1, matrix.GetUpperBound(1) + 1];
+            for (int i = 0; i < matrix.GetUpperBound(0) + 1; i++)
+            {
+                for (int j = 0; j < matrix.GetUpperBound(1) + 1; j++)
+                {
+                    newMat[i, j] = matrix[i, j] + scalar;
+                }
+            }
+            return newMat;
+        }
+        public static double[,] Matrix_Add_Scalar(double scalar, double[,] matrix)
+        {
+            double[,] newMat = new double[matrix.GetUpperBound(0) + 1, matrix.GetUpperBound(1) + 1];
+            for (int i = 0; i < matrix.GetUpperBound(0) + 1; i++)
+            {
+                for (int j = 0; j < matrix.GetUpperBound(1) + 1; j++)
+                {
+                    newMat[i, j] = scalar + matrix[i, j];
+                }
+            }
+            return newMat;
+        }
         /// <summary>
         /// add a scalar from the right to a matrix
         /// </summary>
         /// <returns>The addition scalar.</returns>
-        /// <param name="original">Original.</param>
+        /// <param name="from_right">Original.</param>
         /// <param name="scalar">Scalar.</param>
         public double[,] Matrix_Addition_Scalar(double scalar, bool from_right)
         {
@@ -208,6 +342,30 @@ namespace PerleyML_Core.Math.Matrix
         }
         #endregion
         #region Multiply
+        public static double[,] Matrix_Multiply_Scalar(double[,] matrix, double scalar)
+        {
+            double[,] newMat = new double[matrix.GetUpperBound(0) + 1, matrix.GetUpperBound(1) + 1];
+            for (int i = 0; i < matrix.GetUpperBound(0) + 1; i++)
+            {
+                for (int j = 0; j < matrix.GetUpperBound(1) + 1; j++)
+                {
+                    newMat[i, j] = matrix[i, j] * scalar;
+                }
+            }
+            return newMat;
+        }
+        public static double[,] Matrix_Multiply_Scalar(double scalar, double[,] matrix)
+        {
+            double[,] newMat = new double[matrix.GetUpperBound(0) + 1, matrix.GetUpperBound(1) + 1];
+            for (int i = 0; i < matrix.GetUpperBound(0) + 1; i++)
+            {
+                for (int j = 0; j < matrix.GetUpperBound(1) + 1; j++)
+                {
+                    newMat[i, j] = scalar * matrix[i, j];
+                }
+            }
+            return newMat;
+        }
         /// <summary>
         /// returns a matrix with same dimmensions as provided matrices.
         /// </summary>
@@ -259,7 +417,7 @@ namespace PerleyML_Core.Math.Matrix
         /// </summary>
         /// <returns>The multiply scalar.</returns>
         /// <param name="scalar">Scalar.</param>
-        /// <param name="original">Original.</param>
+        /// <param name="from_right">Original.</param>
         public double[,] Matrix_Multiply_Scalar(double scalar, bool from_right)
         {
             if (!from_right)
@@ -289,8 +447,9 @@ namespace PerleyML_Core.Math.Matrix
         }
         #endregion
         #region misc
-        private double[,] BuildPredictionMatrix_Dimmensional(int Rows, int Columns, double MaxOutput, double MinOutput){
-            int rand = new Random().Next(-1, 1);            
+        private double[,] BuildPredictionMatrix_Dimmensional(int Rows, int Columns, double MaxOutput, double MinOutput)
+        {
+            int rand = new Random().Next(-1, 1);
             double[,] m = new double[Rows, Columns];
             for (int i = 0; i < Rows; i++)
             {
@@ -302,11 +461,27 @@ namespace PerleyML_Core.Math.Matrix
             }
             return m;
         }
-        public double[,] getValue(){
+        public static double[,] BuildPredictionMatrix_Dimmensional(int Rows, int Columns)
+        {
+            int rand = new Random().Next(-1, 1);
+            double[,] m = new double[Rows, Columns];
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Columns; j++)
+                {
+                    double Scores = rand * (1 - -1) + -1;
+                    m[i, j] = Scores;
+                }
+            }
+            return m;
+        }
+        public double[,] getValue()
+        {
             return this.value;
         }
-        
-        public double[][] getJagged(){
+
+        public double[][] getJagged()
+        {
             return Matrix.ToJagged(this.value);
         }
         //builds a row for a new matrix in a dotproduct.

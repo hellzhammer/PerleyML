@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "7p/FR5M0eHem/u3Lf73QBxNvjr1l01lx5gxmGnScrCt1sQRlXcWzbBoawG/1c6O73WGr2w5uLrY2JoYvCv8fww==",
+  "dgSpecHash": "Lv4wS009c14kJqrkmqrkyjBsB5e2ZdUhSapIZ/GLe3GX36kP17qfHXLl4RC+vmCEcl/2bts/mJL3Z/93yL6gyw==",
   "success": true,
   "projectFilePath": "/home/matt/Projects/Perley_ML/PerleyML_Core/PerleyML_Core.csproj",
   "expectedPackageFiles": [
-    "/home/matt/.nuget/packages/mathnet.numerics/4.12.0/mathnet.numerics.4.12.0.nupkg.sha512",
     "/home/matt/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "/usr/share/dotnet/sdk/NuGetFallbackFolder/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
     "/home/matt/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512"
