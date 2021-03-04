@@ -1,3 +1,4 @@
+/*
 namespace PerleyML_Core.ML_IO.Interfaces
 {
     public interface IML_IO
@@ -10,3 +11,4 @@ namespace PerleyML_Core.ML_IO.Interfaces
         bool createJsonModel(string filePath, string data);
     }
 }
+*/

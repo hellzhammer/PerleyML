@@ -76,19 +76,23 @@ namespace PerleyML_Core.Math.LinearRegression
             double[] yMinusMean = this.Scalar_Subtract(this.y_data, ymean);
             double yMeanTotal = this.Square_Data(yMinusMean);
 
+            //get the estimated values
             List<double> Yvals = new List<double>();
             for (int i = 0; i < this.x_data.Length; i++)
             {
                 Yvals.Add(b0 + b1 * this.x_data[i]);
             }
+            //get the actual values
             List<double> YvalsMinusMean = new List<double>();
             for (int i = 0; i < Yvals.Count; i++)
             {
                 //Math.Round(d, 2); 
                 YvalsMinusMean.Add(System.Math.Round(System.Math.Round(Yvals[i], 1) - ymean, 1));
             }
+            //square the actual values
             double YvalsSquared = this.Square_Data(YvalsMinusMean.ToArray());
 
+            //R Squared
             return System.Math.Round(YvalsSquared, 1) / System.Math.Round(yMeanTotal, 1);
         }
 
@@ -134,6 +138,7 @@ namespace PerleyML_Core.Math.LinearRegression
             return sqrt1;
         }
 
+        /*
         public void Binary_Logistic_Analasys(double[] y, double[] x)
         {
             double xmean = this.GetMean(x);
@@ -155,9 +160,6 @@ namespace PerleyML_Core.Math.LinearRegression
             var sigmoid = this.Sigmoid(a+b);
             //return (xmean, ymean, _sumOfSquares, variance, standardDev, _sumOfProducts, a, b);
         }
-
-        /*
-        
         */
 
         /*

@@ -447,21 +447,7 @@ namespace PerleyML_Core.Math.MatrixMath
         }
         #endregion
         #region misc
-        private double[,] BuildPredictionMatrix_Dimmensional(int Rows, int Columns, double MaxOutput, double MinOutput)
-        {
-            int rand = new Random().Next(-1, 1);
-            double[,] m = new double[Rows, Columns];
-            for (int i = 0; i < Rows; i++)
-            {
-                for (int j = 0; j < Columns; j++)
-                {
-                    double Scores = rand * (MaxOutput - MinOutput) + MinOutput;
-                    m[i, j] = Scores;
-                }
-            }
-            return m;
-        }
-        public static double[,] BuildPredictionMatrix_Dimmensional(int Rows, int Columns)
+        public static double[,] BuildPredictionMatrix_Dimmensional_Binary(int Rows, int Columns)
         {
             int rand = new Random().Next(-1, 1);
             double[,] m = new double[Rows, Columns];

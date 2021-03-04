@@ -1,29 +1,31 @@
 using System;
+using PerleyML_Core.Math.MatrixMath;
 
 namespace PerleyML_Core.Math.LogisticRegression
 {
     public class BinaryLogisticRegression
     {
+        public string id { get; private set; }
         private double[,] synapticWeights { get; set; }
 
         public BinaryLogisticRegression(int MatrixRows, int MatrixCols)
         {
-            synapticWeights = MatrixMath.Matrix.BuildPredictionMatrix_Dimmensional(MatrixRows, MatrixCols);
+            synapticWeights = Matrix.BuildPredictionMatrix_Dimmensional_Binary(MatrixRows, MatrixCols);
         }
 
         public double[,] sigmoidFunction(double[,] input, bool deriv)
         {
             if (!deriv)
             {
-                var exp = MatrixMath.Matrix.PointwiseExp(input);
-                var add = MatrixMath.Matrix.Matrix_Add_Scalar(1, exp);
-                var divide = MatrixMath.Matrix.Matrix_Divide_Scalar(1, add);
+                var exp = Matrix.PointwiseExp(input);
+                var add = Matrix.Matrix_Add_Scalar(1, exp);
+                var divide = Matrix.Matrix_Divide_Scalar(1, add);
                 return divide;
             }
             else
             {
-                var subtract = MatrixMath.Matrix.Matrix_Subtract_Scalar(1, input);
-                var pointwiseMultiply = MatrixMath.Matrix.Dotproduct(input, subtract);
+                var subtract = Matrix.Matrix_Subtract_Scalar(1, input);
+                var pointwiseMultiply = Matrix.Dotproduct(input, subtract);
                 return pointwiseMultiply;
             }
         }
@@ -36,13 +38,13 @@ namespace PerleyML_Core.Math.LogisticRegression
             for (int i = 0; i < trainingIterations; i++)
             {
                 var output = Evaluate(trainingInput);
-                var error = MatrixMath.Matrix.Matrix_Subtract(mtrainingOutput, output);
+                var error = Matrix.Matrix_Subtract(mtrainingOutput, output);
 
 
-                var adjustment = dotProduct(MatrixMath.Matrix.Transpose_Dimmensional(mtrainingInput), MatrixMath.Matrix.PointwiseMultiply(error, sigmoidFunction(output, true)));
+                var adjustment = dotProduct(Matrix.Transpose_Dimmensional(mtrainingInput), Matrix.PointwiseMultiply(error, sigmoidFunction(output, true)));
 
 
-                synapticWeights = MatrixMath.Matrix.Matrix_Addition(synapticWeights, adjustment);
+                synapticWeights = Matrix.Matrix_Addition(synapticWeights, adjustment);
             }
         }
 
@@ -53,7 +55,7 @@ namespace PerleyML_Core.Math.LogisticRegression
 
         private double[,] dotProduct(double[,] matrixOne, double[,] matrixTwo)
         {
-            return MatrixMath.Matrix.Dotproduct(matrixOne, matrixTwo);
+            return Matrix.Dotproduct(matrixOne, matrixTwo);
         }
     }
 }
