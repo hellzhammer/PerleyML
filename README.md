@@ -1,45 +1,12 @@
 # Perley_ML_Core_Project
 
-# Package Contains:
+This repo is a passion project. I wanted to know more about the agorithms I was using in ML.
 
-    -Linear Regression (Normal)
-    
-    -Linear Regression (Least Squares)
-    -R Squared
-    -Standard Error on Linear Regression
-    -Logistic Algebra Based Neural Network (Perceptron)
-    -IO Functions
-     
-# Matrix Math: 
-    -Addition(with scalar), 
-    -Subtraction(with scalar), 
-    -Multiplication(with scalar),
-    -Matrix * Matrix,
-    -Dot Product,
-    -Pointwise Exponent,
-    -Pointwise Multiply.
-    -Build Prediction Matrix
-    -Transpose Matrix
-    -Sigmoid Function
-    -Tahn Function
-    
-    Open                    Volume
-1.15                    72400
-1.35                    42200
-1.4                 19000
-1.44                    81300
-1.5                 115100
-1.67                    105700
-1.9                 49600
-1.9                 27800
-1.68                    22100
-1.42                    12700
-1.47                    21500
-1.4                 8500
-1.44                    1600
-1.36                    20600
-1.35                    13000
-1.34                    4000
-1.34                    0
+There is still work to do but this project has a Ordinary least squares linear regression function, 
+binary and multinomial logistic regression. A matrix class that needs extending but handles most standard 
+operations (x, -, +, /) as well as some other functions like pointwise and matrix exponent functions. 
+All code seems to be working when I compare to math.net or run through the math by hand, so I hope that is a good sign ;) lol.
 
-    
+I will add a license at some point, but the code in this repo is free to abuse and redistribute in any way you want. 
+
+Maybe add a reference to me in your comments? I would go for that, even if its letting the next dev know who to email and blame! xD

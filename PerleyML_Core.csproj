@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>PerleyML_Core</PackageId>
-    <Version>0.1</Version>
+    <Version>0.1.1</Version>
     <Authors>Matt Perley</Authors>
     <Company>mattperley.xyz</Company>
   </PropertyGroup>
