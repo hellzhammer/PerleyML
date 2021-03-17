@@ -4,20 +4,20 @@ namespace PerleyML_Core.Math.MatrixMath
 {
     public class Matrix
     {
-        private double[,] value { get; set; }
+        private double[,] matrix { get; set; }
         public Matrix(double[,] matrix)
         {
-            this.value = matrix;
+            this.matrix = matrix;
         }
 
         public Matrix(int matrixRows, int matrixCols, double maxOutput, double minOutput)
         {
-            this.value = new double[matrixRows, matrixCols];
+            this.matrix = new double[matrixRows, matrixCols];
         }
 
         public Matrix(double[][] matrix)
         {
-            this.value = Matrix.ToDimmensional(matrix);
+            this.matrix = Matrix.ToDimmensional(matrix);
         }
 
         #region Exponent Functions
@@ -27,12 +27,12 @@ namespace PerleyML_Core.Math.MatrixMath
         /// <returns>The exp.</returns>
         public double[,] PointwiseExp()
         {
-            double[,] newMat = new double[this.value.GetUpperBound(1) + 1, this.value.GetUpperBound(0) + 1];
-            for (int x = 0; x < this.value.GetUpperBound(0) + 1; x++)
+            double[,] newMat = new double[this.matrix.GetUpperBound(1) + 1, this.matrix.GetUpperBound(0) + 1];
+            for (int x = 0; x < this.matrix.GetUpperBound(0) + 1; x++)
             {
-                for (int i = 0; i < this.value.GetUpperBound(1) + 1; i++)
+                for (int i = 0; i < this.matrix.GetUpperBound(1) + 1; i++)
                 {
-                    newMat[x, i] = System.Math.Pow(System.Math.E, (-this.value[x, i]));
+                    newMat[x, i] = System.Math.Pow(System.Math.E, (-this.matrix[x, i]));
                 }
             }
             return newMat;
@@ -109,24 +109,24 @@ namespace PerleyML_Core.Math.MatrixMath
         {
             if (from_right)
             {
-                double[,] newMat = new double[this.value.GetUpperBound(0) + 1, this.value.GetUpperBound(1) + 1];
-                for (int i = 0; i < this.value.GetUpperBound(0) + 1; i++)
+                double[,] newMat = new double[this.matrix.GetUpperBound(0) + 1, this.matrix.GetUpperBound(1) + 1];
+                for (int i = 0; i < this.matrix.GetUpperBound(0) + 1; i++)
                 {
-                    for (int j = 0; j < this.value.GetUpperBound(1) + 1; j++)
+                    for (int j = 0; j < this.matrix.GetUpperBound(1) + 1; j++)
                     {
-                        newMat[i, j] = this.value[i, j] / scalar;
+                        newMat[i, j] = this.matrix[i, j] / scalar;
                     }
                 }
                 return newMat;
             }
             else
             {
-                double[,] newMat = new double[this.value.GetUpperBound(0) + 1, this.value.GetUpperBound(1) + 1];
-                for (int i = 0; i < this.value.GetUpperBound(0) + 1; i++)
+                double[,] newMat = new double[this.matrix.GetUpperBound(0) + 1, this.matrix.GetUpperBound(1) + 1];
+                for (int i = 0; i < this.matrix.GetUpperBound(0) + 1; i++)
                 {
-                    for (int j = 0; j < this.value.GetUpperBound(1) + 1; j++)
+                    for (int j = 0; j < this.matrix.GetUpperBound(1) + 1; j++)
                     {
-                        newMat[i, j] = scalar / this.value[i, j];
+                        newMat[i, j] = scalar / this.matrix[i, j];
                     }
                 }
                 return newMat;
@@ -205,24 +205,24 @@ namespace PerleyML_Core.Math.MatrixMath
         {
             if (!from_right)
             {
-                double[,] newD = new double[this.value.GetUpperBound(0) + 1, this.value.GetUpperBound(1) + 1];
-                for (int i = 0; i < this.value.GetUpperBound(0) + 1; i++)
+                double[,] newD = new double[this.matrix.GetUpperBound(0) + 1, this.matrix.GetUpperBound(1) + 1];
+                for (int i = 0; i < this.matrix.GetUpperBound(0) + 1; i++)
                 {
-                    for (int j = 0; j < this.value.GetUpperBound(1) + 1; j++)
+                    for (int j = 0; j < this.matrix.GetUpperBound(1) + 1; j++)
                     {
-                        newD[i, j] = scalar - this.value[i, j];
+                        newD[i, j] = scalar - this.matrix[i, j];
                     }
                 }
                 return newD;
             }
             else
             {
-                double[,] newD = new double[this.value.GetUpperBound(0) + 1, this.value.GetUpperBound(1) + 1];
-                for (int i = 0; i < this.value.GetUpperBound(0) + 1; i++)
+                double[,] newD = new double[this.matrix.GetUpperBound(0) + 1, this.matrix.GetUpperBound(1) + 1];
+                for (int i = 0; i < this.matrix.GetUpperBound(0) + 1; i++)
                 {
-                    for (int j = 0; j < this.value.GetUpperBound(1) + 1; j++)
+                    for (int j = 0; j < this.matrix.GetUpperBound(1) + 1; j++)
                     {
-                        newD[i, j] = this.value[i, j] - scalar;
+                        newD[i, j] = this.matrix[i, j] - scalar;
                     }
                 }
                 return newD;
@@ -287,13 +287,13 @@ namespace PerleyML_Core.Math.MatrixMath
         {
             if (from_right)
             {
-                double[,] newD = new double[this.value.GetUpperBound(0) + 1, this.value.GetUpperBound(1) + 1];
+                double[,] newD = new double[this.matrix.GetUpperBound(0) + 1, this.matrix.GetUpperBound(1) + 1];
 
-                for (int i = 0; i < this.value.GetUpperBound(0) + 1; i++)
+                for (int i = 0; i < this.matrix.GetUpperBound(0) + 1; i++)
                 {
-                    for (int j = 0; j < this.value.GetUpperBound(1) + 1; j++)
+                    for (int j = 0; j < this.matrix.GetUpperBound(1) + 1; j++)
                     {
-                        newD[i, j] = this.value[i, j] + scalar;
+                        newD[i, j] = this.matrix[i, j] + scalar;
                     }
                 }
 
@@ -301,13 +301,13 @@ namespace PerleyML_Core.Math.MatrixMath
             }
             else
             {
-                double[,] newD = new double[this.value.GetUpperBound(0) + 1, this.value.GetUpperBound(1) + 1];
+                double[,] newD = new double[this.matrix.GetUpperBound(0) + 1, this.matrix.GetUpperBound(1) + 1];
 
-                for (int i = 0; i < this.value.GetUpperBound(0) + 1; i++)
+                for (int i = 0; i < this.matrix.GetUpperBound(0) + 1; i++)
                 {
-                    for (int j = 0; j < this.value.GetUpperBound(1) + 1; j++)
+                    for (int j = 0; j < this.matrix.GetUpperBound(1) + 1; j++)
                     {
-                        newD[i, j] = scalar + this.value[i, j];
+                        newD[i, j] = scalar + this.matrix[i, j];
                     }
                 }
 
@@ -422,24 +422,24 @@ namespace PerleyML_Core.Math.MatrixMath
         {
             if (!from_right)
             {
-                double[,] newD = new double[this.value.GetUpperBound(0) + 1, this.value.GetUpperBound(1) + 1];
+                double[,] newD = new double[this.matrix.GetUpperBound(0) + 1, this.matrix.GetUpperBound(1) + 1];
                 for (int i = 0; i < newD.GetUpperBound(0) + 1; i++)
                 {
                     for (int j = 0; j < newD.GetUpperBound(1) + 1; j++)
                     {
-                        newD[i, j] = scalar * this.value[i, j];
+                        newD[i, j] = scalar * this.matrix[i, j];
                     }
                 }
                 return newD;
             }
             else
             {
-                double[,] newD = new double[this.value.GetUpperBound(0) + 1, this.value.GetUpperBound(1) + 1];
+                double[,] newD = new double[this.matrix.GetUpperBound(0) + 1, this.matrix.GetUpperBound(1) + 1];
                 for (int i = 0; i < newD.GetUpperBound(0) + 1; i++)
                 {
                     for (int j = 0; j < newD.GetUpperBound(1) + 1; j++)
                     {
-                        newD[i, j] = this.value[i, j] * scalar;
+                        newD[i, j] = this.matrix[i, j] * scalar;
                     }
                 }
                 return newD;
@@ -463,12 +463,12 @@ namespace PerleyML_Core.Math.MatrixMath
         }
         public double[,] getValue()
         {
-            return this.value;
+            return this.matrix;
         }
 
         public double[][] getJagged()
         {
-            return Matrix.ToJagged(this.value);
+            return Matrix.ToJagged(this.matrix);
         }
         //builds a row for a new matrix in a dotproduct.
         private static double[] BuildMatrixRow(double[] leftElement, double[][] rightMatrix)

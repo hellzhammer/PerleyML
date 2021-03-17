@@ -56,16 +56,6 @@ namespace PerleyML_Core.Math.LinearRegression
         }
 
         /// <summary>
-        /// Sigmoid the specified val.
-        /// </summary>
-        /// <returns>The sigmoid.</returns>
-        /// <param name="val">Value.</param>
-        internal double Sigmoid(double val)
-        {
-            return (1 / (1 + System.Math.Pow(System.Math.E, (-val))));
-        }
-
-        /// <summary>
         /// Finds the variace in a given data set
         /// </summary>
         /// <returns>The variance.</returns>
